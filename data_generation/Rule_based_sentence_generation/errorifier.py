@@ -41,7 +41,10 @@ class Errorifier:
             COMMON_REPLACES = REPLACE_transliteration
         if len(self.tokenized) > 0:
             deletable = [i for i, w in enumerate(self.tokenized) if w in COMMON_REPLACES]
-            index = random.choice(deletable)
+            try:
+                index = random.choice(deletable)
+            except IndexError:
+                return self.sentence
             word = self.tokenized[index]
             if not COMMON_REPLACES[word]:
                 return self.sentence
@@ -59,11 +62,9 @@ class Errorifier:
 
     def error(self):
         """Introduce a random error."""
-        count = npchoice([0,1,2,3,4],p=[0.05,0.07,0.25,0.35,0.28])
-        for x in range(count):
-            error_probs = [.20,.20,.20,.20,.20]
-            error_type = npchoice(['WFT', 'Copying expression', 'Synonyms', 'Tense semantics', 'Transliteration'],p=error_probs)
-            self.sentence = self.replace_error(err_type=error_type)
-            self.tokenize()
+        error_probs = [.20,.20,.20,.20,.20]
+        error_type = npchoice(['WFT', 'Copying expression', 'Synonyms', 'Tense semantics', 'Transliteration'],p=error_probs)
+        self.sentence = self.replace_error(err_type=error_type)
+        self.tokenize()
 
         return self.sentence
