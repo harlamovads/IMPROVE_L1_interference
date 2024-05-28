@@ -31,3 +31,6 @@
  - [L1-classifier-WFT](https://huggingface.co/Zlovoblachko/L1-classifier-WFT)
  - [L1-classifier-CopExp](https://huggingface.co/Zlovoblachko/L1-classifier-CopExp)
  - [L1-classifier-TenSem](https://huggingface.co/Zlovoblachko/L1-classifier-TenSem)
+
+Ссылка на датасет с реальными ошибками:
+ - [L1_true_errors](https://huggingface.co/datasets/Zlovoblachko/L1_true_errors)
